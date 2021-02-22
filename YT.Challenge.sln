@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YT.Challenge.Api", "YT.Chal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YT.Challenge.Auth", "YT.Challenge.Auth\YT.Challenge.Auth.csproj", "{DE8ABBDC-AAC4-4ACE-A12A-22B1E8029923}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YT.Challenge.Domain", "YT.Challenge.Domain\YT.Challenge.Domain.csproj", "{053BF560-7CFE-4852-B400-698E65F7D5B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{DE8ABBDC-AAC4-4ACE-A12A-22B1E8029923}.Release|x64.Build.0 = Release|Any CPU
 		{DE8ABBDC-AAC4-4ACE-A12A-22B1E8029923}.Release|x86.ActiveCfg = Release|Any CPU
 		{DE8ABBDC-AAC4-4ACE-A12A-22B1E8029923}.Release|x86.Build.0 = Release|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Debug|x64.Build.0 = Debug|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Debug|x86.Build.0 = Debug|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Release|x64.ActiveCfg = Release|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Release|x64.Build.0 = Release|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{053BF560-7CFE-4852-B400-698E65F7D5B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

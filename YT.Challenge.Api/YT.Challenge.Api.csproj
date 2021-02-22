@@ -8,4 +8,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YT.Challenge.Domain\YT.Challenge.Domain.csproj" />
+    <ProjectReference Include="..\YT.Challenge.Auth\YT.Challenge.Auth.csproj" />
+  </ItemGroup>
+
 </Project>
