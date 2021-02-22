@@ -10,6 +10,10 @@ namespace YT.Challenge.Auth.i18n
             {
                 case MessageKey.INVALID_USER_PASS:
                     return "Username or password is invalid!";
+                case MessageKey.USER_EXISTS:
+                    return "User already exists!";
+                case MessageKey.USER_CREATION_FAILED:
+                    return "User creation failed! Please check user details and try again.";
                 default:
                     return key.ToString();
             }

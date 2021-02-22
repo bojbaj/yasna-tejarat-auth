@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,9 +66,42 @@ namespace YT.Challenge.Auth.Services
             return new TypedResult<UserLoginResponseDto>(loginResponse);
         }
 
-        public Task<TypedResult<UserRegisterResponseDto>> RegisterAsync(UserRegisterRequestDto userRegisterRequestDto)
+        public async Task<TypedResult<UserRegisterResponseDto>> RegisterAsync(UserRegisterRequestDto userRegisterRequestDto)
         {
-            throw new System.NotImplementedException();
+            var userExists = await _userManager.FindByNameAsync(userRegisterRequestDto.Username);
+            if (userExists != null)
+                return new TypedResult<UserRegisterResponseDto>(false, _messageRepo.Get(MessageKey.USER_EXISTS), null);
+
+            ApplicationUser user = new ApplicationUser()
+            {
+                Email = userRegisterRequestDto.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = userRegisterRequestDto.Username
+            };
+            var result = await _userManager.CreateAsync(user, userRegisterRequestDto.Password);
+            if (!result.Succeeded)
+            {
+                string errorMesage = _messageRepo.Get(MessageKey.USER_CREATION_FAILED);
+                errorMesage += Environment.NewLine + string.Join(Environment.NewLine, result.Errors.Select(x => $"{x.Code}: {x.Description}"));
+                return new TypedResult<UserRegisterResponseDto>(false, errorMesage, null);
+            }
+
+            UserLoginRequestDto loginRequest = new UserLoginRequestDto()
+            {
+                Username = userRegisterRequestDto.Username,
+                Password = userRegisterRequestDto.Password
+            };
+            TypedResult<UserLoginResponseDto> loginResponse = await LoginAsync(loginRequest);
+            if (!loginResponse.Status)
+            {
+                return new TypedResult<UserRegisterResponseDto>(false, loginResponse.Message, null);
+            }
+            var response = new UserRegisterResponseDto()
+            {
+                Token = loginResponse.Data.Token,
+                Expiration = loginResponse.Data.Expiration
+            };
+            return new TypedResult<UserRegisterResponseDto>(response);
         }
     }
 }
