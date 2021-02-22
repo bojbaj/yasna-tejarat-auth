@@ -14,6 +14,8 @@ namespace YT.Challenge.Auth.i18n
                     return "User already exists!";
                 case MessageKey.USER_CREATION_FAILED:
                     return "User creation failed! Please check user details and try again.";
+                case MessageKey.INTERNAL_SERVER_ERROR:
+                    return "Internal Server Error.";
                 default:
                     return key.ToString();
             }

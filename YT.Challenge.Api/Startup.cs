@@ -4,9 +4,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using YT.Challenge.Api.Middlewares;
 using YT.Challenge.Auth;
 using YT.Challenge.Auth.DB;
+using YT.Challenge.Auth.i18n;
 using YT.Challenge.Auth.Models;
 
 namespace YT.Challenge.Api
@@ -33,6 +36,7 @@ namespace YT.Challenge.Api
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env,
+        ILogger<Startup> logger, IMessageRepo messageRepo,
         AuthDbContext authDbContext, UserManager<ApplicationUser> userManager)
         {
             if (env.IsDevelopment())
@@ -43,6 +47,8 @@ namespace YT.Challenge.Api
             }
 
             authDbContext.CreateAndMigrateAuthDB(userManager);
+
+            app.ConfigureExceptionHandler(logger, messageRepo);
 
             app.UseRouting();
 

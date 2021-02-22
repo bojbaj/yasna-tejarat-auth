@@ -72,6 +72,10 @@ namespace YT.Challenge.Auth.Services
             if (userExists != null)
                 return new TypedResult<UserRegisterResponseDto>(false, _messageRepo.Get(MessageKey.USER_EXISTS), null);
 
+            userExists = await _userManager.FindByEmailAsync(userRegisterRequestDto.Email);
+            if (userExists != null)
+                return new TypedResult<UserRegisterResponseDto>(false, _messageRepo.Get(MessageKey.USER_EXISTS), null);
+
             ApplicationUser user = new ApplicationUser()
             {
                 Email = userRegisterRequestDto.Email,

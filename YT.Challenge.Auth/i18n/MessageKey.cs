@@ -4,6 +4,7 @@ namespace YT.Challenge.Auth.i18n
     {
         INVALID_USER_PASS,
         USER_EXISTS,
-        USER_CREATION_FAILED
+        USER_CREATION_FAILED,
+        INTERNAL_SERVER_ERROR
     }
 }
